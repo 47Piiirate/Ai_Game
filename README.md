@@ -1,8 +1,10 @@
-# Metroidvania Game
+# AI Game Project
 
-A 2D platformer with Metroidvania-style progression, ability upgrades, and multiple levels.
+A 2D platformer game built with Pygame featuring animation, physics, and achievements.
 
-## Getting Started
+## Project Structure
+
+The game has been reorganized for clarity and reduced redundancy:
 
 ### Requirements
 - Python 3.7+

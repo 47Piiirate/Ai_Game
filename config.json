@@ -1,0 +1,36 @@
+{
+    "video": {
+        "width": 800,
+        "height": 600,
+        "fullscreen": false,
+        "vsync": true,
+        "fps_limit": 60
+    },
+    "audio": {
+        "music_volume": 0.7,
+        "sfx_volume": 0.8,
+        "mute": false
+    },
+    "controls": {
+        "keyboard": {
+            "left": "LEFT",
+            "right": "RIGHT",
+            "up": "UP",
+            "down": "DOWN",
+            "jump": "SPACE",
+            "attack": "z",
+            "special": "x",
+            "pause": "ESCAPE"
+        },
+        "gamepad": true
+    },
+    "gameplay": {
+        "difficulty": "normal",
+        "show_fps": false,
+        "show_hitboxes": false
+    },
+    "development": {
+        "debug_mode": false,
+        "log_level": "INFO"
+    }
+}

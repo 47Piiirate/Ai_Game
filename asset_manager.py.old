@@ -1,0 +1,56 @@
+import os
+import pygame
+
+class AssetManager:
+    def __init__(self):
+        self.images = {}
+    
+    def load_image(self, path):
+        """Load an image and return a pygame surface or a fallback if it fails."""
+        try:
+            full_path = os.path.join(os.path.dirname(__file__), path)
+            
+            # Check if file exists
+            if not os.path.exists(full_path):
+                print(f"Warning: Image file does not exist: {full_path}")
+                # Return a fallback image (small colored square)
+                fallback = pygame.Surface((32, 32))
+                fallback.fill((255, 0, 255))  # Magenta for visibility
+                return fallback
+            
+            # Try to load the image
+            image = pygame.image.load(full_path).convert_alpha()
+            return image
+                
+        except Exception as e:
+            print(f"Error loading image {path}: {e}")
+            # Return a fallback image (small colored square)
+            fallback = pygame.Surface((32, 32))
+            fallback.fill((255, 0, 255))  # Magenta for visibility
+            return fallback
+    
+    def load_sprite_sheet(self, path, width, height, frames, spacing=0):
+        """Load a sprite sheet and split it into individual frames."""
+        try:
+            sheet = self.load_image(path)
+            sprite_frames = []
+            
+            for i in range(frames):
+                x = i * (width + spacing)
+                frame = pygame.Surface((width, height), pygame.SRCALPHA)
+                frame.blit(sheet, (0, 0), (x, 0, width, height))
+                sprite_frames.append(frame)
+            
+            return sprite_frames
+        except Exception as e:
+            print(f"Error loading sprite sheet {path}: {e}")
+            # Return fallback frames
+            return [self.create_fallback_image() for _ in range(frames)]
+    
+    def create_fallback_image(self, width=32, height=32):
+        """Create a fallback image when loading fails."""
+        image = pygame.Surface((width, height), pygame.SRCALPHA)
+        image.fill((255, 0, 255))  # Magenta for visibility
+        pygame.draw.line(image, (0, 0, 0), (0, 0), (width, height), 2)
+        pygame.draw.line(image, (0, 0, 0), (width, 0), (0, height), 2)
+        return image
