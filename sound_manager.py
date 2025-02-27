@@ -54,16 +54,16 @@ class SoundManager:
         # Load sound effects (with error handling if files don't exist)
         for sound_name, file_path in sound_files.items():
             try:
-                sound = pygame.mixer.Sound(os.path.join("assets", "sounds", file_path))
-                sound.set_volume(self.sfx_volume)
-                self.sounds[sound_name] = sound
-            except:
-                print(f"Warning: Could not load sound {file_path}")
-        
-        # Store music file paths (we'll load them when needed)
-        for music_name, file_path in music_files.items():
-            self.music_tracks[music_name] = os.path.join("assets", "music", file_path)
-    
+                # Skip loading sound if the file does not exist
+                sound_path = os.path.join("assets", "sounds", file_path)
+                if os.path.exists(sound_path):
+                    sound = pygame.mixer.Sound(sound_path)
+                    self.sounds[sound_name] = sound
+                else:
+                    print(f"Warning: Sound file does not exist, skipping {file_path}")
+            except Exception as e:
+                print(f"Warning: Could not load sound {file_path}: {e}")
+
     def play_sound(self, sound_name):
         """Play a sound effect by name"""
         if sound_name in self.sounds:
@@ -120,3 +120,9 @@ class SoundManager:
         """Set music volume (0.0 to 1.0)"""
         self.music_volume = max(0.0, min(1.0, volume))
         pygame.mixer.music.set_volume(self.music_volume)
+
+# Example usage
+if __name__ == "__main__":
+    pygame.init()
+    sound_manager = SoundManager()
+    # Now you can use sound_manager to access sounds and music

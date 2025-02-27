@@ -11,7 +11,7 @@ try:
     from ui import UI
     from game_state import GameState
     from sound_manager import SoundManager
-    from asset_manager import AssetManager  # New import
+    from asset_manager import AssetManager
 except ImportError as e:
     print(f"Error importing modules: {e}")
     print("Make sure all required files are in the correct location.")
@@ -54,10 +54,10 @@ def main():
     clock = pygame.time.Clock()
     FPS = 60
     
-    # Create asset manager first so it's available to other objects
+    # Initialize the AssetManager to load assets
     asset_manager = AssetManager()
-    print("Asset manager initialized")
-    
+    print("Asset manager initialized and assets loaded")
+
     # Create game objects with error handling
     try:
         game_state = GameState()
