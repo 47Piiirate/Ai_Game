@@ -1,0 +1,67 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Game specific
+saves/
+*.save
+logs/
+*.log
+highscores.txt
+
+# Generated assets (might want to keep these in source control instead)
+# assets/images/*.png
+# assets/sounds/*.wav
+# assets/music/*.mp3
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+
+# OS specific
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# C/C++ extensions build files
+*.o
+*.obj
+physics_engine.cpp
+
+# Temporary files
+temp/
+.temp/
+tmp/
+.tmp/
